@@ -15,23 +15,15 @@
 <!-- 2. Đoạn script độc lập điều khiển phát ngẫu nhiên -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const Src = ['fHIqymvGLM8', 'DgVkYLalF6c'];
+    setTimeout(() => {
+            const Src = ['fHIqymvGLM8', 'DgVkYLalF6c'];
     const Si = ['OGIZ3Pf4ATVKeQN0', '7LmWVedde8fhTKEr']; 
-    
-    if (Src.length === 0) return;
-
-    // Tính toán vị trí ngẫu nhiên
-    const x = Math.floor(Math.random() * Src.length);
-    
-    // ĐÃ SỬA: Sửa lại cấu trúc /embed/ và thay toàn bộ &amp; thành &
+    const x = Math.round(Math.random() * Src.length);
     const embedUrl = `https://www.youtube-nocookie.com/embed/${Src[x]}?si=${Si[x]}&start=0&autoplay=1&loop=1`;
-    
-    // Tìm iframe và gán src
     const iframe = document.getElementById('target-player');
-    if (iframe) {
-        iframe.src = embedUrl;
-    }
+    iframe.src = embedUrl;
     console.log(embedUrl);
+    }, 1);
 });
 </script>
 
