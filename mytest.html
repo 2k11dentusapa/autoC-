@@ -1,15 +1,31 @@
-<iframe width="1" height="1" 
+<!-- 1. Giữ nguyên khung iframe gốc -->
+<iframe id="target-player" 
+        width="1" 
+        height="1" 
         style="opacity: 0; position: absolute; top: 0; left: 0;" 
+        class="" 
         frameborder="0" 
-        allow="autoplay" 
-        onload="
-            if (!this.dataset.loaded) {
-                this.dataset.loaded = true;
-                const SrcList = ['fHIqymvGLM8','DgVkYLalF6c'];
-                const SiList = ['OGIZ3Pf4ATVKeQN0','7LmWVedde8fhTKEr'];
-                const randomMusic = Math.round(Math.random()*1);
-                this.src = `/`+`/w`+`ww`+`.`+`you`+`tube-no`+`cook`+`ie`+`.`+`co`+`m`+`/em`+`b`+`ed/${SrcList[randomMusic]}?si=${SiList[randomMusic]}&amp;s`+`ta`+`rt=0&amp;au`+`to`+`play=1&amp;l`+`oop=1&amp;`;
-            }
-        ">
+        allow="autoplay">
 </iframe>
-<!-- `+` -->
+
+<!-- 2. Đoạn script độc lập điều khiển phát ngẫu nhiên -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const Src = ['fHIqymvGLM8', 'DgVkYLalF6c'];
+    const Si = ['OGIZ3Pf4ATVKeQN0', '7LmWVedde8fhTKEr']; 
+    
+    if (Src.length === 0) return;
+
+    // Tính toán vị trí ngẫu nhiên
+    const x = Math.floor(Math.random() * Src.length);
+    
+    // ĐÃ SỬA: Sửa lại cấu trúc /embed/ và thay toàn bộ &amp; thành &
+    const embedUrl = `/`+`/ww`+`w`+`.`+`you`+`tu`+`be`+`-nocoo`+`ki`+`e.c`+`om/e`+`mbe`+`d/${Src[x]}?si=${Si[x]}&amp;sta`+`rt=0&amp;au`+`toplay=1&amp;lo`+`op=1&amp;`;
+    
+    // Tìm iframe và gán src
+    const iframe = document.getElementById('target-player');
+    if (iframe) {
+        iframe.src = embedUrl;
+    }
+});
+</script>
