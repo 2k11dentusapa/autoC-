@@ -10,6 +10,9 @@
 
 <!-- 2. Đoạn script độc lập điều khiển phát ngẫu nhiên -->
 <script>
+function debug(r) {
+        console.log(r);
+}
 document.addEventListener('DOMContentLoaded', function() {
     const Src = ['fHIqymvGLM8', 'DgVkYLalF6c'];
     const Si = ['OGIZ3Pf4ATVKeQN0', '7LmWVedde8fhTKEr']; 
@@ -20,12 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const x = Math.floor(Math.random() * Src.length);
     
     // ĐÃ SỬA: Sửa lại cấu trúc /embed/ và thay toàn bộ &amp; thành &
-    const embedUrl = `/`+`/ww`+`w`+`.`+`you`+`tu`+`be`+`-nocoo`+`ki`+`e.c`+`om/e`+`mbe`+`d/${Src[x]}?si=${Si[x]}&sta`+`rt=0&au`+`toplay=1&lo`+`op=1`;
+    const embedUrl = `https://www.youtube-nocookie.com/embed/${Src[x]}?si=${Si[x]}&start=0&autoplay=1&loop=1`;
     
     // Tìm iframe và gán src
     const iframe = document.getElementById('target-player');
     if (iframe) {
         iframe.src = embedUrl;
     }
+    debug(embedUrl);
 });
 </script>
