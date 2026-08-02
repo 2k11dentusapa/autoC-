@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9ff;
+  color: #1a3a5f;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background trắng tuyết */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #e3f0ff 0%, #f0f8ff 100%);
+  z-index: -2;
+}
+
+/* Hiệu ứng tuyết rơi */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://i.ibb.co/0jKzY8K/snow.png') repeat;
+  opacity: 0.15;
+  animation: snowfall 25s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes snowfall {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 800px; }
+}
+
+/* Sidebar */
+.sidebar {
+  width: 340px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.92);
+  border-right: 4px solid #a5d6ff;
+  padding: 25px 18px;
+  overflow-y: auto;
+  box-shadow: 6px 0 25px rgba(100, 180, 255, 0.25);
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 18px;
+  background: linear-gradient(135deg, #e0f0ff, #c0e0ff);
+  border-radius: 16px;
+  border: 2px solid #81c4ff;
+  box-shadow: 0 6px 20px rgba(129, 196, 255, 0.3);
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1e4a7a;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 18s linear infinite;
+  text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(120%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Section */
+.section {
+  margin-bottom: 32px;
+}
+
+.section h2 {
+  color: #1e4a7a;
+  margin-bottom: 14px;
+  font-size: 1.35rem;
+  border-bottom: 3px solid #81c4ff;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Luật */
+.rules {
+  list-style: none;
+  background: #f0f8ff;
+  padding: 16px;
+  border-radius: 14px;
+  border: 2px solid #b3d9ff;
+}
+
+.rules li {
+  padding: 8px 0 8px 26px;
+  position: relative;
+  border-bottom: 1px solid #d0e6ff;
+}
+
+.rules li:last-child {
+  border-bottom: none;
+}
+
+.rules li::before {
+  content: "❄️";
+  position: absolute;
+  left: 8px;
+  color: #5eb8ff;
+  font-size: 1.1rem;
+}
+
+/* Grid 2x2 */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.btn-game {
+  background: linear-gradient(135deg, #81c4ff, #5eb8ff);
+  color: white;
+  text-decoration: none;
+  padding: 16px 10px;
+  text-align: center;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(94, 184, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-game:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 10px 22px rgba(94, 184, 255, 0.5);
+  background: linear-gradient(135deg, #5eb8ff, #81c4ff);
+}
+
+/* Leaderboard */
+.leaderboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.leaderBoard\\:\\:player {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #81c4ff;
+  box-shadow: 0 6px 16px rgba(129, 196, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.leaderBoard\\:\\:player:hover {
+  transform: scale(1.12);
+  border-color: #1e90ff;
+}
+
+/* Feedback */
+#sendFeedbackInput {
+  width: 100%;
+  height: 120px;
+  background: #f8fbff;
+  border: 2px solid #81c4ff;
+  border-radius: 14px;
+  color: #1a3a5f;
+  padding: 14px;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 14px;
+}
+
+#sendFeedbackInput:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 0 4px rgba(129, 196, 255, 0.3);
+  outline: none;
+}
+
+#sendFeedbackButton {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #1e90ff, #5eb8ff);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(30, 144, 255, 0.4);
+  transition: all 0.3s;
+}
+
+#sendFeedbackButton:hover {
+  background: linear-gradient(135deg, #5eb8ff, #1e90ff);
+  transform: translateY(-2px);
+}
